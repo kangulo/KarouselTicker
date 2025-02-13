@@ -13,6 +13,9 @@ A Simple Image/Logo Carousel mostly used for logo tickers. This carousel is impl
 - Pause on hover functionality
 - Cross-browser compatibility
 
+## Example: 
+[kangulo.github.io/karouselticker](https://kangulo.github.io/KarouselTicker)
+
 ## ToDo: 
 - Touch and swipe support for mobile devices
 - Vertical Mode
