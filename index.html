@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KarouselTicker</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <h1>Karousel Ticker</h1>
+    <p>A Simple Image/Logo Carousel mostly used for logo tickers. This carousel is implemented using plain JavaScript and does not require any jQuery library.</p>
+    <h2>Features</h2>
+    <ul>
+        <li>Lightweight and fast</li>
+        <li>No dependencies on external libraries</li>
+        <li>Easy to integrate and customize</li>
+        <li>Responsive design</li>
+        <li>Supports infinite looping</li>
+        <li>Smooth transition effects</li>
+        <li>Configurable autoplay settings</li>
+        <li>Pause on hover functionality</li>
+        <li>Cross-browser compatibility</li>
+
+    </ul>
+
+    <div class="karousel-container" data-direction="right-to-left" data-speed="1" data-pause-on-hover="true">
+        <div class="karousel-track">
+            <div class="karousel-item">Logo 1</div>
+            <div class="karousel-item">Logo 2</div>
+            <div class="karousel-item">Logo 3</div>
+            <div class="karousel-item">Logo 4</div>
+        </div>
+    </div>
+
+    <script src="js/KarouselTicker.js"></script>
+    <script>
+        // Initialize carousels when page loads
+        window.addEventListener('load', () => {
+            const carouselContainers = document.querySelectorAll('.karousel-container');
+            carouselContainers.forEach(container => new KarouselTicker(container));
+        });
+    </script>
+</body>
+</html>
