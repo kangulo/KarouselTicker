@@ -14,7 +14,7 @@ A Simple Image/Logo Carousel mostly used for logo tickers. This carousel is impl
 - Cross-browser compatibility
 
 ## Example: 
-[kangulo.github.io/karouselticker](https://kangulo.github.io/KarouselTicker)
+[kangulo.github.io/KarouselTicker](https://kangulo.github.io/KarouselTicker)
 
 ## ToDo: 
 - Touch and swipe support for mobile devices
