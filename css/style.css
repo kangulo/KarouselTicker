@@ -1,21 +1,63 @@
+.karousel {
+	padding: 50px 0 20px 0;	
+	@media (max-width: 768px) {
+		padding: 15px 0;
+	}
+}
 .karousel-container {
-    width: 100%;
     overflow: hidden;
     position: relative;
-    margin:80px 0;
-    white-space: nowrap;
+    width: 100%;
+    min-height: 180px; /* Match your item height */
+	touch-action: pan-y; /* Allow vertical scrolling but capture horizontal */
 }
 
 .karousel-track {
     display: flex;
     position: relative;
-    transform: translateX(0);
+    will-change: transform;
+	transition: transform 0.1s ease-out; /* Smoother transitions when dragging stops */
+	transition: transform 0.05s linear;
 }
 
 .karousel-item {
-    margin: 0 0 0 5px;
-    float: left;
-    border: 4px solid red;
+    flex-shrink: 0;
+    margin: 0 0 0 10px;
     text-align: center;
-    padding: 80px;
+    height: 180px;
+    min-width: 180px;
+    border: 4px solid red;
+    width: auto;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+	pointer-events: none; /* Prevent image dragging issues */
+}
+
+.karousel-item * {
+    pointer-events: none; /* Prevent image dragging issues */
+}
+
+.karousel-item img {
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: contain;
+	user-drag: none;
+    -webkit-user-drag: none;
+}
+.karousel-item.double {
+    max-height: 100%;
+    max-width: 270px;
+	min-width: 270px;
+    object-fit: cover;
+}
+.karousel-container {
+	margin-bottom: 10px;
+}
+
+.github-icon {
+    width: 25px;
+    height: 25px;
+    margin: 0 auto;
 }
