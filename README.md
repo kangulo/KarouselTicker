@@ -67,6 +67,7 @@ All options are read from attributes on the `.karousel-container` element itself
 | `data-sync-pause` | `true` \| `false` | `true` | Only matters when `data-pause-on-hover="true"`. `true`: hovering *any* ticker on the page pauses *every* ticker. `false`: hovering only pauses that one ticker. |
 | `data-draggable` | `true` \| `false` | `true` | Whether the user can drag/swipe the track. Includes momentum on release. |
 | `data-karousel-group` | any string | *(none)* | Carousels sharing the same group value are "entangled": dragging any one of them drags all the others in the group too, in lockstep, by the same pixel amount — regardless of where they are on the page. Omit this attribute for a fully independent ticker. |
+| `data-full-bleed` | `true` \| `false` | `true` | Whether the container breaks out to full viewport width (see below). Set to `false` to keep the ticker confined to its actual parent instead — e.g. when it lives inside a card or column rather than spanning the page. |
 
 ### Entangled ("linked") carousels
 
@@ -83,6 +84,8 @@ Dragging either one moves both together, and releasing on one carries the result
 ### Full-viewport-width layout
 
 `.karousel-container` automatically stretches to the full browser viewport width and centers itself, "breaking out" of any constrained parent it's nested inside (a Bootstrap `.container` with a `max-width`, for example). This is applied by the script itself at runtime and does not require Bootstrap's CSS to be loaded — you can drop this component into a non-Bootstrap page with no changes.
+
+Set `data-full-bleed="false"` to opt out and keep the ticker confined to its actual parent width instead — useful when you want it to stay inside a card, column, or any other box rather than spanning the page.
 
 ## Styling
 

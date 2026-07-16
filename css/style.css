@@ -5,22 +5,32 @@
    this demo page's own layout (.karousel, .github-icon). */
 
 .karousel {
-	padding: 50px 0 20px 0;
-	@media (max-width: 768px) {
-		padding: 15px 0;
-	}
+	padding: 1.5rem 0;
 }
 
 .karousel-item {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 180px;
-    min-width: 180px;
-    border: 4px solid red;
-    padding: 20px;
+    gap: 0.6rem;
+    height: 108px;
+    min-width: 168px;
+    padding: 0 1.5rem;
+    background: var(--white, #fff);
+    border: 1px solid var(--gray-200, #e4e4e7);
+    border-radius: var(--radius-md, 12px);
+    font-family: var(--font-heading, "Sora", sans-serif);
+    font-weight: 600;
+    font-size: 0.925rem;
+    color: var(--gray-900, #18181b);
+    white-space: nowrap;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease;
 }
-
+.karousel-item:hover {
+    border-color: var(--purple-500, #8b5cf6);
+    box-shadow: var(--shadow-sm, 0 1px 2px rgba(46, 16, 101, 0.06));
+    transform: translateY(-1px);
+}
 
 .karousel-item img {
     max-height: 100%;

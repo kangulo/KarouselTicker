@@ -49,6 +49,7 @@ const KarouselRegistry = {
         this.syncPause = container.dataset.syncPause !== 'false'; // Default to true
         this.draggable = container.dataset.draggable !== 'false'; // Default to true
         this.group = container.dataset.karouselGroup || null; // Carousels sharing a group are "entangled" for dragging
+        this.fullBleed = container.dataset.fullBleed !== 'false'; // Default to true
 
         this.position = 0;
         this.isAnimating = false;
@@ -75,16 +76,23 @@ const KarouselRegistry = {
         this.container.style.touchAction = 'pan-y'; // allow vertical page scroll, capture horizontal drag
         this.container.style.marginBottom = '10px';
 
-        // Make the container behave like Bootstrap's .container-fluid, without relying on Bootstrap being loaded.
-        // Break out of any constrained parent (e.g. a .container with a max-width) so it still spans the full viewport.
         this.container.style.position = 'relative';
-        this.container.style.width = '100vw';
-        this.container.style.left = '50%';
-        this.container.style.right = '50%';
-        this.container.style.marginLeft = '-50vw';
-        this.container.style.marginRight = '-50vw';
-        this.container.style.paddingRight = '0.75rem';
-        this.container.style.paddingLeft = '0.75rem';
+
+        if (this.fullBleed) {
+            // Make the container behave like Bootstrap's .container-fluid, without relying on
+            // Bootstrap being loaded. Breaks out of any constrained parent (e.g. a .container with
+            // a max-width) so it still spans the full viewport. Set data-full-bleed="false" to
+            // keep the ticker confined to its actual parent instead (e.g. inside a card/box).
+            this.container.style.width = '100vw';
+            this.container.style.left = '50%';
+            this.container.style.right = '50%';
+            this.container.style.marginLeft = '-50vw';
+            this.container.style.marginRight = '-50vw';
+            this.container.style.paddingRight = '0.75rem';
+            this.container.style.paddingLeft = '0.75rem';
+        } else {
+            this.container.style.width = '100%';
+        }
 
         // Track styling required for the slider mechanism to work at all
         this.track.style.display = 'flex';

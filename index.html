@@ -4,234 +4,315 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KarouselTicker</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <title>KarouselTicker — a dependency-free logo ticker for JavaScript</title>
+    <meta name="description"
+        content="A tiny, dependency-free auto-scrolling ticker with drag momentum, direction-aware resume, and linked 'entangled' carousels. No jQuery, no build step.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/demo.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
-    <section class="container my-5">
-        <div class="row">
-            <div class="col">
-                <h1>Karousel Ticker Demo</h1>
-                <p>A Simple Image/Logo Carousel mostly used for logo tickers. This carousel is implemented using plain
-                    JavaScript and does not require any jQuery library.</p>
-                <h2>Features</h2>
-                <ul>
-                    <li>Lightweight and fast</li>
-                    <li>No dependencies on external libraries</li>
-                    <li>Easy to integrate and customize</li>
-                    <li>Responsive design</li>
-                    <li>Supports infinite looping</li>
-                    <li>Smooth transition effects</li>
-                    <li>Configurable autoplay settings (direction, speed)</li>
-                    <li>Draggable with momentum, auto-scroll resumes in the dragged direction</li>
-                    <li>"Entangled" carousels: link any number of tickers, anywhere on the page, to drag together</li>
-                    <li>Pause on hover, per-ticker or synced across the whole page</li>
-                    <li>Lays out full-viewport-width automatically, with or without Bootstrap</li>
-                    <li>Cross-browser compatibility</li>
-                </ul>
-                <p>See the <a href="README.md">README</a> for the full list of options.</p>
+    <nav class="nav">
+        <div class="wrap">
+            <a href="#" class="nav-logo"><span class="nav-logo-dot"></span> KarouselTicker</a>
+            <div class="nav-links">
+                <a href="#features">Features</a>
+                <a href="#examples">Examples</a>
+                <a href="#quick-start">Quick Start</a>
+                <a href="#docs">Docs</a>
+                <a href="https://github.com/kangulo/KarouselTicker" target="_blank" class="btn btn-ghost">GitHub</a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="wrap">
+            <p class="eyebrow">Plain JavaScript · Zero dependencies</p>
+            <h1>A ticker that feels alive.</h1>
+            <p class="lede">Drag it, flick it, link several together — KarouselTicker keeps scrolling in whichever
+                direction you last touched it. One script, no jQuery, no build step.</p>
+            <div class="hero-cta">
+                <a href="#quick-start" class="btn btn-primary">Get started</a>
+                <a href="#examples" class="btn btn-ghost">See it in action</a>
+            </div>
+        </div>
+        <div class="hero-demo">
+            <div class="karousel-container" data-direction="right-to-left" data-speed="1" data-pause-on-hover="true">
+                <div class="karousel-track">
+                    <div class="karousel-item">Drag me</div>
+                    <div class="karousel-item">Flick me</div>
+                    <div class="karousel-item">Link me to another ticker</div>
+                    <div class="karousel-item">Hover to pause</div>
+                    <div class="karousel-item">Zero dependencies</div>
+                    <div class="karousel-item">180 bytes of markup</div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="section" id="features">
+        <div class="wrap">
+            <div class="section-header center">
+                <p class="eyebrow">Why KarouselTicker</p>
+                <h2>Everything a logo ticker should do</h2>
+                <p>Built for the small stuff that usually gets skipped: real dragging, real momentum, and a layout
+                    that doesn't fight the rest of your page.</p>
+            </div>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">0</div>
+                    <h3>Zero dependencies</h3>
+                    <p>No jQuery, no framework, no build step. One script tag and it works.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">↔</div>
+                    <h3>Draggable, with momentum</h3>
+                    <p>Grab it, flick it, let go — it eases out naturally instead of stopping dead.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⟲</div>
+                    <h3>Direction-aware resume</h3>
+                    <p>After a drag, auto-scroll continues in whichever direction you just dragged it — not
+                        whatever it started with.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⚛</div>
+                    <h3>Entangled carousels</h3>
+                    <p>Link any number of tickers, anywhere on the page, so dragging one drags all of them —
+                        in lockstep.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⏸</div>
+                    <h3>Smart pause on hover</h3>
+                    <p>Pause a single ticker, or sync the pause across every ticker on the page — your call.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">▭</div>
+                    <h3>Self-contained layout</h3>
+                    <p>The script applies its own required styles at runtime — no stylesheet needed, and it
+                        stretches full-bleed even nested inside a constrained container.</p>
+                </div>
             </div>
         </div>
     </section>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <h2>Single Karousel</h2>
-            </div>
-        </div>
-    </div>
-    <div class="container-fluid karousel">
-        <div class="karousel-container" data-direction="right-to-left" data-speed="1" data-pause-on-hover="true"
-            data-draggable="false">
-            <div class="karousel-track">
-                <div class="karousel-item">Logo 1</div>
-                <div class="karousel-item">Logo 2</div>
-                <div class="karousel-item">Logo 3</div>
-                <div class="karousel-item">Logo 4</div>
-            </div>
-        </div>
-    </div>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <h2>Multiple Karousel</h2>
-                <p>Both rows below share <code>data-karousel-group="multiple-demo"</code>, so they're
-                    <strong>entangled</strong>: drag either one and both move together, in lockstep, release on one
-                    and both pick up the same momentum and continuing direction. Carousels are only linked this way
-                    if they explicitly share a group value — everything else on this page drags independently. There's
-                    a third carousel using this exact same group much further down the page (see "Far-Away Entangled
-                    Karousel" near the bottom) — entangled carousels don't need to be adjacent, or even in the same
-                    section.</p>
-            </div>
-        </div>
-    </div>
-    <div class="container-fluid karousel">
-        <div class="karousel-container" data-direction="right-to-left" data-speed="1" data-pause-on-hover="true"
-            data-karousel-group="multiple-demo">
-            <div class="karousel-track">
-                <div class="karousel-item">Logo 1</div>
-                <div class="karousel-item">Logo 2</div>
-                <div class="karousel-item">Logo 3</div>
-                <div class="karousel-item">Logo 4</div>
-            </div>
-        </div>
-        <div class="karousel-container" data-direction="right-to-left" data-speed="1" data-pause-on-hover="true"
-            data-karousel-group="multiple-demo">
-            <div class="karousel-track">
-                <div class="karousel-item">Logo 1</div>
-                <div class="karousel-item">Logo 2</div>
-                <div class="karousel-item">Logo 3</div>
-                <div class="karousel-item">Logo 4</div>
-            </div>
-        </div>
-    </div>
 
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <h2>Direction</h2>
-                <p><code>data-direction</code> sets which way the ticker auto-scrolls: <code>right-to-left</code>
-                    (the default) or <code>left-to-right</code>. Drag either one — it'll flip to auto-scroll in
-                    whichever direction you just dragged it.</p>
+    <section class="section section--alt" id="examples">
+        <div class="wrap">
+            <div class="section-header center">
+                <p class="eyebrow">Examples</p>
+                <h2>Every option, live</h2>
+                <p>Each one below is a real, running <code>KarouselTicker</code> — drag it, hover it, click it.</p>
             </div>
-        </div>
-    </div>
-    <div class="container-fluid karousel">
-        <div class="karousel-container" data-direction="right-to-left" data-speed="1">
-            <div class="karousel-track">
-                <div class="karousel-item">right-to-left</div>
-                <div class="karousel-item">Logo 2</div>
-                <div class="karousel-item">Logo 3</div>
-                <div class="karousel-item">Logo 4</div>
-            </div>
-        </div>
-        <div class="karousel-container" data-direction="left-to-right" data-speed="1">
-            <div class="karousel-track">
-                <div class="karousel-item">left-to-right</div>
-                <div class="karousel-item">Logo 2</div>
-                <div class="karousel-item">Logo 3</div>
-                <div class="karousel-item">Logo 4</div>
-            </div>
-        </div>
-    </div>
 
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <h2>Speed</h2>
-                <p><code>data-speed</code> is the number of pixels the track moves per animation frame. Higher is
-                    faster.</p>
+            <div class="example">
+                <div class="example-copy">
+                    <p class="eyebrow">data-direction</p>
+                    <h3>Direction</h3>
+                    <p><code>right-to-left</code> (the default) or <code>left-to-right</code>. Drag either row
+                        below — it flips to auto-scroll in whichever direction you just dragged it.</p>
+                </div>
+                <div class="example-demo">
+                    <div class="karousel-container" data-direction="right-to-left" data-speed="1"
+                        data-full-bleed="false">
+                        <div class="karousel-track">
+                            <div class="karousel-item">right-to-left</div>
+                            <div class="karousel-item">Logo 2</div>
+                            <div class="karousel-item">Logo 3</div>
+                            <div class="karousel-item">Logo 4</div>
+                        </div>
+                    </div>
+                    <div class="karousel-container" data-direction="left-to-right" data-speed="1"
+                        data-full-bleed="false">
+                        <div class="karousel-track">
+                            <div class="karousel-item">left-to-right</div>
+                            <div class="karousel-item">Logo 2</div>
+                            <div class="karousel-item">Logo 3</div>
+                            <div class="karousel-item">Logo 4</div>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
-    </div>
-    <div class="container-fluid karousel">
-        <div class="karousel-container" data-direction="right-to-left" data-speed="0.5">
-            <div class="karousel-track">
-                <div class="karousel-item">speed 0.5</div>
-                <div class="karousel-item">Logo 2</div>
-                <div class="karousel-item">Logo 3</div>
-                <div class="karousel-item">Logo 4</div>
-            </div>
-        </div>
-        <div class="karousel-container" data-direction="right-to-left" data-speed="4">
-            <div class="karousel-track">
-                <div class="karousel-item">speed 4</div>
-                <div class="karousel-item">Logo 2</div>
-                <div class="karousel-item">Logo 3</div>
-                <div class="karousel-item">Logo 4</div>
-            </div>
-        </div>
-    </div>
 
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <h2>Pause on Hover</h2>
-                <p><code>data-pause-on-hover="true"</code> pauses the ticker while the mouse is over it.
-                    <code>data-sync-pause</code> decides whether that pause is felt by every ticker on the page
-                    (<code>true</code>, the default) or only this one (<code>false</code>). Hover the first row below
-                    — only it pauses, the second row keeps scrolling.</p>
+            <div class="example reverse">
+                <div class="example-copy">
+                    <p class="eyebrow">data-speed</p>
+                    <h3>Speed</h3>
+                    <p>Pixels moved per animation frame. Higher is faster — compare the two rows below.</p>
+                </div>
+                <div class="example-demo">
+                    <div class="karousel-container" data-direction="right-to-left" data-speed="0.5"
+                        data-full-bleed="false">
+                        <div class="karousel-track">
+                            <div class="karousel-item">speed 0.5</div>
+                            <div class="karousel-item">Logo 2</div>
+                            <div class="karousel-item">Logo 3</div>
+                            <div class="karousel-item">Logo 4</div>
+                        </div>
+                    </div>
+                    <div class="karousel-container" data-direction="right-to-left" data-speed="4"
+                        data-full-bleed="false">
+                        <div class="karousel-track">
+                            <div class="karousel-item">speed 4</div>
+                            <div class="karousel-item">Logo 2</div>
+                            <div class="karousel-item">Logo 3</div>
+                            <div class="karousel-item">Logo 4</div>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
-    </div>
-    <div class="container-fluid karousel">
-        <div class="karousel-container" data-direction="right-to-left" data-speed="1" data-pause-on-hover="true"
-            data-sync-pause="false">
-            <div class="karousel-track">
-                <div class="karousel-item">hover pauses only me</div>
-                <div class="karousel-item">Logo 2</div>
-                <div class="karousel-item">Logo 3</div>
-                <div class="karousel-item">Logo 4</div>
-            </div>
-        </div>
-        <div class="karousel-container" data-direction="right-to-left" data-speed="1">
-            <div class="karousel-track">
-                <div class="karousel-item">unaffected neighbor</div>
-                <div class="karousel-item">Logo 2</div>
-                <div class="karousel-item">Logo 3</div>
-                <div class="karousel-item">Logo 4</div>
-            </div>
-        </div>
-    </div>
 
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <h2>Non-draggable</h2>
-                <p><code>data-draggable="false"</code> turns off dragging/swiping entirely; the ticker only
-                    auto-scrolls.</p>
+            <div class="example">
+                <div class="example-copy">
+                    <p class="eyebrow">data-pause-on-hover · data-sync-pause</p>
+                    <h3>Pause on hover</h3>
+                    <p><code>data-sync-pause="false"</code> scopes the pause to just that ticker (the default,
+                        <code>true</code>, pauses every ticker on the page). Hover the first row — only it stops.</p>
+                </div>
+                <div class="example-demo">
+                    <div class="karousel-container" data-direction="right-to-left" data-speed="1"
+                        data-pause-on-hover="true" data-sync-pause="false" data-full-bleed="false">
+                        <div class="karousel-track">
+                            <div class="karousel-item">hover pauses only me</div>
+                            <div class="karousel-item">Logo 2</div>
+                            <div class="karousel-item">Logo 3</div>
+                            <div class="karousel-item">Logo 4</div>
+                        </div>
+                    </div>
+                    <div class="karousel-container" data-direction="right-to-left" data-speed="1"
+                        data-full-bleed="false">
+                        <div class="karousel-track">
+                            <div class="karousel-item">unaffected neighbor</div>
+                            <div class="karousel-item">Logo 2</div>
+                            <div class="karousel-item">Logo 3</div>
+                            <div class="karousel-item">Logo 4</div>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
-    </div>
-    <div class="container-fluid karousel">
-        <div class="karousel-container" data-direction="right-to-left" data-speed="1" data-draggable="false">
-            <div class="karousel-track">
-                <div class="karousel-item">not draggable</div>
-                <div class="karousel-item">Logo 2</div>
-                <div class="karousel-item">Logo 3</div>
-                <div class="karousel-item">Logo 4</div>
-            </div>
-        </div>
-    </div>
 
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <h2>Clickable Content Inside an Item</h2>
-                <p>A <code>.karousel-item</code> can be, or contain, a real link or button — it's not limited to
-                    plain text/images. The first card below is itself an <code>&lt;a&gt;</code>, with the href
-                    covering the whole card, which is normally the scenario that breaks a drag (the browser tries
-                    to start its own native link-drag the instant you press down on it). Dragging the track still
-                    works here, and a genuine click still navigates — only an actual drag is suppressed as a
-                    click.</p>
+            <div class="example reverse">
+                <div class="example-copy">
+                    <p class="eyebrow">data-karousel-group</p>
+                    <h3>Entangled carousels</h3>
+                    <p>Both rows share <code>data-karousel-group="multiple-demo"</code>, so they're <strong>entangled
+                        </strong>: drag either one and both move together, in lockstep, with the same momentum and
+                        continuing direction. There's a third one entangled with these two all the way down by the
+                        footer — entanglement works page-wide, not just between neighbors.</p>
+                </div>
+                <div class="example-demo">
+                    <div class="karousel-container" data-direction="right-to-left" data-speed="1"
+                        data-pause-on-hover="true" data-karousel-group="multiple-demo" data-full-bleed="false">
+                        <div class="karousel-track">
+                            <div class="karousel-item">Logo 1</div>
+                            <div class="karousel-item">Logo 2</div>
+                            <div class="karousel-item">Logo 3</div>
+                            <div class="karousel-item">Logo 4</div>
+                        </div>
+                    </div>
+                    <div class="karousel-container" data-direction="right-to-left" data-speed="1"
+                        data-pause-on-hover="true" data-karousel-group="multiple-demo" data-full-bleed="false">
+                        <div class="karousel-track">
+                            <div class="karousel-item">Logo 1</div>
+                            <div class="karousel-item">Logo 2</div>
+                            <div class="karousel-item">Logo 3</div>
+                            <div class="karousel-item">Logo 4</div>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
-    </div>
-    <div class="container-fluid karousel">
-        <div class="karousel-container" data-direction="right-to-left" data-speed="1">
-            <div class="karousel-track">
-                <a class="karousel-item" href="https://github.com/kangulo/KarouselTicker" target="_blank">Full-card
-                    link</a>
-                <div class="karousel-item">Logo 2</div>
-                <div class="karousel-item">Logo 3</div>
-                <div class="karousel-item">Logo 4</div>
-            </div>
-        </div>
-    </div>
 
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <h2>How to Use</h2>
-                <p>Include <code>js/KarouselTicker.js</code> — that's the only required file, since it injects the
-                    <code>.karousel-container</code>/<code>.karousel-track</code> styles the slider itself needs.
-                    Then create a container with the class <code>karousel-container</code> and add your items
-                    inside a <code>karousel-track</code> div:
-                </p>
-<pre><code>&lt;div class="karousel-container" data-direction="right-to-left" data-speed="1"&gt;
+            <div class="example">
+                <div class="example-copy">
+                    <p class="eyebrow">data-draggable</p>
+                    <h3>Non-draggable</h3>
+                    <p><code>data-draggable="false"</code> turns off dragging/swiping entirely — the ticker just
+                        auto-scrolls.</p>
+                </div>
+                <div class="example-demo">
+                    <div class="karousel-container" data-direction="right-to-left" data-speed="1"
+                        data-draggable="false" data-full-bleed="false">
+                        <div class="karousel-track">
+                            <div class="karousel-item">not draggable</div>
+                            <div class="karousel-item">Logo 2</div>
+                            <div class="karousel-item">Logo 3</div>
+                            <div class="karousel-item">Logo 4</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="example reverse">
+                <div class="example-copy">
+                    <p class="eyebrow">clickable content</p>
+                    <h3>Links work inside items</h3>
+                    <p>The first card is itself an <code>&lt;a&gt;</code>, href covering the whole card — normally
+                        the exact case that breaks dragging, since the browser tries to start its own native
+                        link-drag the instant you press down. Dragging still works here, and a genuine click still
+                        navigates.</p>
+                </div>
+                <div class="example-demo">
+                    <div class="karousel-container" data-direction="right-to-left" data-speed="1"
+                        data-full-bleed="false">
+                        <div class="karousel-track">
+                            <a class="karousel-item" href="https://github.com/kangulo/KarouselTicker"
+                                target="_blank">Full-card link</a>
+                            <div class="karousel-item">Logo 2</div>
+                            <div class="karousel-item">Logo 3</div>
+                            <div class="karousel-item">Logo 4</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="wrap">
+            <div class="section-header center">
+                <p class="eyebrow">Real-world example</p>
+                <h2>A site-navigation ticker</h2>
+                <p>The same component, styled as a compact department directory — two rows scrolling opposite
+                    directions.</p>
+            </div>
+            <div class="karousel-container" data-speed="1" data-direction="right-to-left" data-full-bleed="false">
+                <ul class="karousel-track">
+                    <li class="karousel-item"><span class="dept-badge">A</span> Advocacy &amp; Policy</li>
+                    <li class="karousel-item"><span class="dept-badge">B</span> Board</li>
+                    <li class="karousel-item"><span class="dept-badge">C</span> Communications &amp; Marketing</li>
+                    <li class="karousel-item"><span class="dept-badge">D</span> Development</li>
+                    <li class="karousel-item"><span class="dept-badge">E</span> Evaluation</li>
+                    <li class="karousel-item"><span class="dept-badge">F</span> Fundraising Strategy</li>
+                </ul>
+            </div>
+            <div class="karousel-container" data-speed="1" data-direction="left-to-right" data-full-bleed="false">
+                <ul class="karousel-track">
+                    <li class="karousel-item"><span class="dept-badge">H</span> Human Resources</li>
+                    <li class="karousel-item"><span class="dept-badge">L</span> Leadership &amp; Employee Resources
+                    </li>
+                    <li class="karousel-item"><span class="dept-badge">L</span> Legal</li>
+                    <li class="karousel-item"><span class="dept-badge">R</span> Racial Justice, Equity &amp;
+                        Inclusion</li>
+                    <li class="karousel-item"><span class="dept-badge">S</span> Strategic Planning</li>
+                    <li class="karousel-item"><span class="dept-badge">T</span> Technology</li>
+                    <li class="karousel-item"><span class="dept-badge">V</span> Volunteer Management</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="section section--alt" id="quick-start">
+        <div class="wrap">
+            <div class="section-header">
+                <p class="eyebrow">Quick start</p>
+                <h2>Drop it in</h2>
+            </div>
+            <p>Only <code>js/KarouselTicker.js</code> is required — it applies every style the slider mechanism
+                itself needs directly to the elements at runtime, so there's no external stylesheet to remember.</p>
+            <pre><code>&lt;div class="karousel-container" data-direction="right-to-left" data-speed="1"&gt;
     &lt;div class="karousel-track"&gt;
         &lt;div class="karousel-item"&gt;Logo 1&lt;/div&gt;
         &lt;div class="karousel-item"&gt;Logo 2&lt;/div&gt;
@@ -244,185 +325,111 @@
         document.querySelectorAll('.karousel-container').forEach(el =&gt; new KarouselTicker(el));
     });
 &lt;/script&gt;</code></pre>
-                <p>Every setting — direction, speed, pause-on-hover, draggability, and entanglement group — is read
-                    from <code>data-*</code> attributes on the <code>.karousel-container</code> element, as
-                    demonstrated in each example above. See the
-                    <a href="README.md">README</a> for the full attribute reference.</p>
-                <p><code>.karousel-item</code>'s base layout (flex-shrink, box-sizing, spacing, list-style) is
-                    applied by the script too — the only thing left to CSS is presentation you want to add yourself
-                    (size, border, background, an <code>img</code> inside it, etc). <code>css/style.css</code> in
-                    this repo is just one example of that. Links and buttons inside a
-                    <code>.karousel-item</code> are fully clickable — dragging is only distinguished from a tap by
-                    pointer distance, not by disabling clicks.</p>
-                <h2>Example</h2>
-                <p>The examples above show every configurable option. You can modify the items and settings as per
-                    your requirements.</p>
-                <h2>License</h2>
-                <p>This project is licensed under the MIT License. Feel free to use and modify it as per your needs.</p>
-                <h2>Contributing</h2>
-                <p>If you would like to contribute to this project, please fork the repository and submit a pull
-                    request. Your contributions are welcome!</p>
-                <h2>Contact</h2>
-                <p>If you have any questions or feedback, feel free to reach out to me at <a
-                        href="mailto:kevinangulo@gmail.com">kevinangulo@gmail.com</a>.</p>
-                <h2>Follow Me</h2>
-                <p>You can follow me on GitHub for more projects and updates:</p>
-                <a href="https://github.com/kangulo/KarouselTicker" target="_blank" class="github-link">
-                    <span>For more information, check out the <a href="https://github.com/kangulo/KarouselTicker"
-                            target="_blank">GitHub repository</a>.</span>
-                    <svg class="github-icon" width="1024" height="1024" viewBox="0 0 1024 1024" fill="none"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd" clip-rule="evenodd"
-                            d="M8 0C3.58 0 0 3.58 0 8C0 11.54 2.29 14.53 5.47 15.59C5.87 15.66 6.02 15.42 6.02 15.21C6.02 15.02 6.01 14.39 6.01 13.72C4 14.09 3.48 13.23 3.32 12.78C3.23 12.55 2.84 11.84 2.5 11.65C2.22 11.5 1.82 11.13 2.49 11.12C3.12 11.11 3.57 11.7 3.72 11.94C4.44 13.15 5.59 12.81 6.05 12.6C6.12 12.08 6.33 11.73 6.56 11.53C4.78 11.33 2.92 10.64 2.92 7.58C2.92 6.71 3.23 5.99 3.74 5.43C3.66 5.23 3.38 4.41 3.82 3.31C3.82 3.31 4.49 3.1 6.02 4.13C6.66 3.95 7.34 3.86 8.02 3.86C8.7 3.86 9.38 3.95 10.02 4.13C11.55 3.09 12.22 3.31 12.22 3.31C12.66 4.41 12.38 5.23 12.3 5.43C12.81 5.99 13.12 6.7 13.12 7.58C13.12 10.65 11.25 11.33 9.47 11.53C9.76 11.78 10.01 12.26 10.01 13.01C10.01 14.08 10 14.94 10 15.21C10 15.42 10.15 15.67 10.55 15.59C13.71 14.53 16 11.53 16 8C16 3.58 12.42 0 8 0Z"
-                            transform="scale(64)" fill="#1B1F23" />
-                    </svg>
-                </a>
-                <p></p>
+            <p>Every setting on this page — direction, speed, pause-on-hover, draggability, entanglement group — is
+                read straight from <code>data-*</code> attributes on the <code>.karousel-container</code> element.
+                No JS configuration object needed.</p>
+            <p><code>.karousel-item</code> is yours to style however you like (size, border, background, an
+                <code>img</code> inside it) — <code>css/style.css</code> in this repo is just one example. Its base
+                layout (flex-shrink, box-sizing, spacing) is applied by the script too, so it lays out correctly
+                even with no CSS at all.</p>
+        </div>
+    </section>
+
+    <section class="section" id="docs">
+        <div class="wrap">
+            <div class="section-header">
+                <p class="eyebrow">Reference</p>
+                <h2>Every <code>data-*</code> option</h2>
+            </div>
+            <div class="api-table-wrap">
+                <table class="api-table">
+                    <thead>
+                        <tr>
+                            <th>Attribute</th>
+                            <th>Values</th>
+                            <th>Default</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>data-direction</code></td>
+                            <td><code>right-to-left</code> | <code>left-to-right</code></td>
+                            <td><code>right-to-left</code></td>
+                            <td>Which way the ticker auto-scrolls. Flips automatically after a drag to match
+                                whichever direction you last dragged.</td>
+                        </tr>
+                        <tr>
+                            <td><code>data-speed</code></td>
+                            <td>number (px per frame)</td>
+                            <td><code>1</code></td>
+                            <td>Auto-scroll speed. Higher is faster.</td>
+                        </tr>
+                        <tr>
+                            <td><code>data-pause-on-hover</code></td>
+                            <td><code>true</code> | <code>false</code></td>
+                            <td><code>false</code></td>
+                            <td>Pause the auto-scroll while the mouse is over the container.</td>
+                        </tr>
+                        <tr>
+                            <td><code>data-sync-pause</code></td>
+                            <td><code>true</code> | <code>false</code></td>
+                            <td><code>true</code></td>
+                            <td>Only matters with pause-on-hover enabled. <code>true</code> pauses every ticker on
+                                the page; <code>false</code> pauses only that one.</td>
+                        </tr>
+                        <tr>
+                            <td><code>data-draggable</code></td>
+                            <td><code>true</code> | <code>false</code></td>
+                            <td><code>true</code></td>
+                            <td>Whether the user can drag/swipe the track, with momentum on release.</td>
+                        </tr>
+                        <tr>
+                            <td><code>data-karousel-group</code></td>
+                            <td>any string</td>
+                            <td><em>(none)</em></td>
+                            <td>Carousels sharing the same value are "entangled": dragging one drags every other
+                                one in the group, anywhere on the page.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p style="margin-top: 1.5rem;">See the <a href="README.md">README</a> for the full write-up, including
+                entangled carousels and the full-bleed layout behavior.</p>
+        </div>
+    </section>
+
+    <section class="section section--alt">
+        <div class="wrap" style="text-align:center;">
+            <p class="eyebrow">still entangled, all the way down here ↓</p>
+            <div class="karousel-container" data-direction="right-to-left" data-speed="1"
+                data-karousel-group="multiple-demo" data-full-bleed="false">
+                <div class="karousel-track">
+                    <div class="karousel-item">Logo 1</div>
+                    <div class="karousel-item">Logo 2</div>
+                    <div class="karousel-item">Logo 3</div>
+                    <div class="karousel-item">Logo 4</div>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <h2 class="label">Additional resources:</h2>
+    </section>
 
+    <footer class="footer">
+        <div class="wrap">
+            <div>
+                <p class="nav-logo" style="margin-bottom: 0.5rem;"><span class="nav-logo-dot"></span> KarouselTicker
+                </p>
+                <small>MIT Licensed. Inspired by <a href="https://github.com/yuriyberezovskiy">carouselTicker by
+                        yuriyberezovskiy</a>.</small>
+            </div>
+            <div class="footer-links">
+                <a href="https://github.com/kangulo/KarouselTicker" target="_blank">GitHub</a>
+                <a href="README.md">Documentation</a>
+                <a href="mailto:kevinangulo@gmail.com">Contact</a>
+                <a href="http://opensource.org/licenses/MIT" target="_blank">License</a>
             </div>
         </div>
-    </div>
-    <div class="container">
-
-
-        <div class="karousel-container" data-speed="1" data-direction="right-to-left">
-            <ul class="karousel-track">
-                <li class="karousel-item" data-karousel-set="0" data-karousel-index="0">
-                    <div><i class="icon-account"></i>
-                        <h5 class="title">Advocacy &amp; Policy</h5>
-                    </div>
-                </li>
-                <li class="karousel-item" data-karousel-set="0" data-karousel-index="1">
-                    <div><i class="icon-user-groups"></i>
-                        <h5 class="title">Board</h5>
-                    </div>
-                </li>
-                <li class="karousel-item" data-karousel-set="0" data-karousel-index="2">
-                    <div><i class="icon-campaign"></i>
-                        <h5 class="title">Communications &amp; Marketing</h5>
-                    </div>
-                </li>
-                <li class="karousel-item" data-karousel-set="0" data-karousel-index="3">
-                    <div><i class="icon-price-check"></i>
-                        <h5 class="title">Development</h5>
-                    </div>
-                </li>
-                <li class="karousel-item" data-karousel-set="0" data-karousel-index="4">
-                    <div><i class="icon-search"></i>
-                        <h5 class="title">Evaluation</h5>
-                    </div>
-                </li>
-                <li class="karousel-item" data-karousel-set="0" data-karousel-index="5">
-                    <div><i class="icon-account"></i>
-                        <h5 class="title">Advocacy &amp; Policy</h5>
-                    </div>
-                </li>
-            </ul>
-        </div>
-        <div class="karousel-container" data-speed="1" data-direction="left-to-right">
-            <ul class="karousel-track">
-                <li class="karousel-item" data-karousel-set="0" data-karousel-index="0">
-                    <div><i class="icon-search"></i>
-                        <h5 class="title">Fundraising Strategy</h5>
-                    </div>
-                </li>
-                <li class="karousel-item" data-karousel-set="0" data-karousel-index="1">
-                    <div><i class="icon-local-library"></i>
-                        <h5 class="title">Human Resources</h5>
-                    </div>
-                </li>
-                <li class="karousel-item" data-karousel-set="0" data-karousel-index="2">
-                    <div><i class="icon-podium"></i>
-                        <h5 class="title">Leadership &amp; Employee Resources</h5>
-                    </div>
-                </li>
-                <li class="karousel-item" data-karousel-set="0" data-karousel-index="3">
-                    <div><i class="icon-gavel"></i>
-                        <h5 class="title">Legal</h5>
-                    </div>
-                </li>
-                <li class="karousel-item" data-karousel-set="0" data-karousel-index="4">
-                    <div><i class="icon-user-groups-alt"></i>
-                        <h5 class="title">Racial Justice and Diversity, Equity, and Inclusion</h5>
-                    </div>
-                </li>
-                <li class="karousel-item" data-karousel-set="0" data-karousel-index="5">
-                    <div><i class="icon-search"></i>
-                        <h5 class="title">Fundraising Strategy</h5>
-                    </div>
-                </li>
-            </ul>
-        </div>
-        <div class="karousel-container" data-speed="1" data-direction="right-to-left">
-            <ul class="karousel-track">
-                <li class="karousel-item" data-karousel-set="0" data-karousel-index="0">
-                    <div><i class="icon-chess"></i>
-                        <h5 class="title">Strategic Planning</h5>
-                    </div>
-                </li>
-                <li class="karousel-item" data-karousel-set="0" data-karousel-index="1">
-                    <div><i class="icon-devices"></i>
-                        <h5 class="title">Technology</h5>
-                    </div>
-                </li>
-                <li class="karousel-item" data-karousel-set="0" data-karousel-index="2">
-                    <div><i class="icon-chat"></i>
-                        <h5 class="title">Volunteer Management</h5>
-                    </div>
-                </li>
-                <li class="karousel-item" data-karousel-set="0" data-karousel-index="3">
-                    <div><i class="icon-account"></i>
-                        <h5 class="title">Advocacy &amp; Policy</h5>
-                    </div>
-                </li>
-                <li class="karousel-item" data-karousel-set="0" data-karousel-index="4">
-                    <div><i class="icon-user-groups"></i>
-                        <h5 class="title">Board</h5>
-                    </div>
-                </li>
-                <li class="karousel-item" data-karousel-set="0" data-karousel-index="5">
-                    <div><i class="icon-chess"></i>
-                        <h5 class="title">Strategic Planning</h5>
-                    </div>
-                </li>
-                <li class="karousel-item" data-karousel-set="0" data-karousel-index="6">
-                    <div><i class="icon-devices"></i>
-                        <h5 class="title">Technology</h5>
-                    </div>
-                </li>
-            </ul>
-        </div>
-    </div>
-
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <h2>Far-Away Entangled Karousel</h2>
-                <p>This single carousel uses <code>data-karousel-group="multiple-demo"</code> — the exact same group
-                    as the two rows in the "Multiple Karousel" example near the top of this page. Even though it's
-                    nowhere near them in the document and shares no parent element, dragging it drags them too (and
-                    vice versa): entanglement is page-wide, keyed purely on matching group names.</p>
-            </div>
-        </div>
-    </div>
-    <div class="container-fluid karousel">
-        <div class="karousel-container" data-direction="right-to-left" data-speed="1"
-            data-karousel-group="multiple-demo">
-            <div class="karousel-track">
-                <div class="karousel-item">Logo 1</div>
-                <div class="karousel-item">Logo 2</div>
-                <div class="karousel-item">Logo 3</div>
-                <div class="karousel-item">Logo 4</div>
-            </div>
-        </div>
-    </div>
+    </footer>
 
     <script src="js/KarouselTicker.js"></script>
     <script>
