@@ -1,43 +1,26 @@
+/* .karousel-container, .karousel-track, and the base .karousel-item layout (flex-shrink,
+   margin, box-sizing, list-style) are no longer styled here — they're required for the slider
+   mechanism itself, so KarouselTicker.js sets them inline at runtime, making the component
+   self-contained. This file only needs to cover optional item presentation (img/.double) plus
+   this demo page's own layout (.karousel, .github-icon). */
+
 .karousel {
-	padding: 50px 0 20px 0;	
+	padding: 50px 0 20px 0;
 	@media (max-width: 768px) {
 		padding: 15px 0;
 	}
 }
-.karousel-container {
-    overflow: hidden;
-    position: relative;
-    width: 100%;
-    min-height: 180px; /* Match your item height */
-	touch-action: pan-y; /* Allow vertical scrolling but capture horizontal */
-}
-
-.karousel-track {
-    display: flex;
-    position: relative;
-    will-change: transform;
-	transition: transform 0.1s ease-out; /* Smoother transitions when dragging stops */
-	transition: transform 0.05s linear;
-}
 
 .karousel-item {
-    flex-shrink: 0;
-    margin: 0 0 0 10px;
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     height: 180px;
     min-width: 180px;
     border: 4px solid red;
-    width: auto;
-    box-sizing: border-box;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-	pointer-events: none; /* Prevent image dragging issues */
+    padding: 20px;
 }
 
-.karousel-item * {
-    pointer-events: none; /* Prevent image dragging issues */
-}
 
 .karousel-item img {
     max-height: 100%;
@@ -51,9 +34,6 @@
     max-width: 270px;
 	min-width: 270px;
     object-fit: cover;
-}
-.karousel-container {
-	margin-bottom: 10px;
 }
 
 .github-icon {
