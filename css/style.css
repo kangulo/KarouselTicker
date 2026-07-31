@@ -28,8 +28,7 @@
 }
 .karousel-item:hover {
     border-color: var(--purple-500, #8b5cf6);
-    box-shadow: var(--shadow-sm, 0 1px 2px rgba(46, 16, 101, 0.06));
-    transform: translateY(-1px);
+    box-shadow: var(--shadow-sm, 0 1px 2px rgba(46, 16, 101, 0.06));    
 }
 
 .karousel-item img {
